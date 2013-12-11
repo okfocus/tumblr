@@ -1,0 +1,391 @@
+<!DOCTYPE html> 
+<!--
+
+    ,----..          ,--.              ,----..                                       
+   /   /   \     ,--/  /|    ,---,.   /   /   \    ,----..                .--.--.    
+  /   .     : ,---,': / '  ,'  .' |  /   .     :  /   /   \         ,--, /  /    '.  
+ .   /   ;.  \:   : '/ / ,---.'   | .   /   ;.  \|   :     :      ,'_ /||  :  /`. /  
+.   ;   /  ` ;|   '   ,  |   |   .'.   ;   /  ` ;.   |  ;. / .--. |  | :;  |  |--`   
+;   |  ; \ ; |'   |  /   :   :  :  ;   |  ; \ ; |.   ; /--`,'_ /| :  . ||  :  ;_     
+|   :  | ; | '|   ;  ;   :   |  |-,|   :  | ; | ';   | ;   |  ' | |  . . \  \    `.  
+.   |  ' ' ' ::   '   \  |   :  ;/|.   |  ' ' ' :|   : |   |  | ' |  | |  `----.   \ 
+'   ;  \; /  ||   |    ' |   |   .''   ;  \; /  |.   | '___:  | | :  ' ;  __ \  \  | 
+ \   \  ',  / '   : |.  \'   :  '   \   \  ',  / '   ; : .'|  ; ' |  | ' /  /`--'  / 
+  ;   :    /  |   | '_\.'|   |  |    ;   :    /  '   | '/  :  | : ;  ; |'--'.     /  
+   \   \ .'   '   : |    |   :  \     \   \ .'   |   :    /'  :  `--'   \ `--'---'   
+    `---`     ;   |,'    |   | ,'      `---`      \   \ .' :  ,      .-./            
+              '---'      `----'                    `---`    `--`----'                
+
+OKFocus300 Theme By http://okfoc.us, Internet Legends. ©2013
+-->
+<html>
+<head>
+	<title>{Title}</title>
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+	{block:Description}
+	<meta name="description" content="{MetaDescription}" />
+	{/block:Description}
+	<meta name="if:invert colors" content="0"/>
+	<meta name="if:hide text" content="0"/>
+	<meta name="if:infinite scroll" content="0"/>
+	<meta name="if:large images" content="0"/>
+	<style>
+	* {
+		margin: 0;
+		padding: 0;
+	} 
+	body {
+		font-family: Helvetica, sans-serif;
+		background:#f9f9f9;
+		background-size:cover;
+		background-attachment:fixed;
+		box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		-webkit-box-sizing:border-box;
+		text-align:center;
+		font-size: 18px;
+		font-weight:bold;
+		line-height:22px;
+	}
+	ol, table, p, a, table, td, tr {
+		color:black;
+		margin:0;
+		padding:0;
+	}
+	#posts{
+		display:inline-block;
+		width:100%;
+		position:absolute;
+		height:100%;
+		left: 0;
+		top: 0;
+	}
+	.post{
+		background-attachment:fixed;
+		width:100%;
+		height:100%;
+		background-repeat:no-repeat;
+		background-position:center;
+	}
+	.post td{
+		width:34%;
+	}
+	.caption{
+		text-align: left;
+		padding-left:10px;
+	}
+	.like_and_reblog_buttons{
+		max-width: 200px;
+		text-align: right;
+		padding-right: 8px;
+		width: 86px;
+	}
+	.like_and_reblog_buttons span{
+		float:right;
+		margin:0 5px;
+	}
+	p{
+		max-width:300px;
+	}
+	h1{
+		position:fixed;
+		top:10px;
+		font-size:18px;
+		width:100%;
+		left:0; 
+		z-index:300;
+	}
+	.spacer{
+		width: 81%;
+	}
+	.content.pset{
+		position: absolute;
+		left: 0;
+		margin-top: -35%;
+	}
+	#footer {
+		position:fixed;
+		width:100%;
+		bottom:10px;
+		left:0;
+	}
+	#footer a{
+		text-decoration:none;
+		margin:0 5px;
+		font-size:23px;
+	}
+	{block:IfInvertColors}
+	body{
+		background:black;
+		color:white!important;
+	}
+	ol, table, p, a, table, td, tr {
+		color:white;
+	}
+	{/block:IfInvertColors}
+	{block:IfHideText}
+	.like_and_reblog_buttons{
+		display:none;
+	}
+	.caption{
+		display:none;
+	}
+	{/block:IfHideText}
+	{block:IfLargeImages}
+	.post{
+		background-size:auto 80%;
+	}
+	{/block:IfLargeImages}
+	</style> 
+</head>
+<body>
+	<h1>{Title}</h1>
+	<div id="posts">
+		{block:Posts}
+		{block:Text}
+		<table class="post text">
+			{block:Title}
+			<h3><a href="{Permatablenk}">{Title}</a></h3>
+			{/block:Title}{Body}
+		</table>
+		{/block:Text}
+		{block:Photo}
+		<table class="post photo" style="background-image:url({block:IfNotLargeImages}{PhotoURL-500}{/block:IfNotLargeImages}{block:IfLargeImages}{PhotoURL-HighRes}{/block:IfLargeImages})" alt="{PhotoAlt}">
+			<tr>
+				{block:Caption}
+				<td class="caption">{Caption}</td>
+				{/block:Caption}
+				<td class="like_and_reblog_buttons">
+					{block:IfNotInvertColors}
+					<span>{ReblogButton color="black"}</span>
+					<span>{LikeButton color="black"}</span>
+					{/block:IfNotInvertColors}
+					{block:IfInvertColors}
+					<span>{ReblogButton color="white"}</span>
+					<span>{LikeButton color="white"}</span>
+					{/block:IfInvertColors}
+				</td>
+			</td>
+		</table>
+		{/block:Photo}
+		{block:Panorama}
+		<table class="post panorama" style="background-image:url({PhotoURL-Panorama})" alt="{PhotoAlt}">
+			<tr>
+				{block:Caption}
+				<td class="caption">{Caption}</td>
+				{/block:Caption}
+				<td class="like_and_reblog_buttons">
+					{block:IfNotInvertColors}
+					<span>{ReblogButton color="black"}</span>
+					<span>{LikeButton color="black"}</span>
+					{/block:IfNotInvertColors}
+					{block:IfInvertColors}
+					<span>{ReblogButton color="white"}</span>
+					<span>{LikeButton color="white"}</span>
+					{/block:IfInvertColors}
+				</td>
+			</tr>
+		</table>
+		{/block:Panorama}
+		{block:Photoset}
+		{block:Photos}
+		<table class="post photoset" style="background-image:url({block:IfNotLargeImages}{PhotoURL-500}{/block:IfNotLargeImages}{block:IfLargeImages}{PhotoURL-HighRes}{/block:IfLargeImages})" alt="{PhotoAlt}"></table>
+			{/block:Photos}
+			<table class="content pset">
+				<tr>
+					{block:Caption}
+					<td class="caption">{Caption}</td>
+					{/block:Caption}
+					<td class="spacer"></td>
+					<td class="like_and_reblog_buttons">
+						{block:IfNotInvertColors}
+						<span>{ReblogButton color="black"}</span>
+						<span>{LikeButton color="black"}</span>
+						{/block:IfNotInvertColors}
+						{block:IfInvertColors}
+						<span>{ReblogButton color="white"}</span>
+						<span>{LikeButton color="white"}</span>
+						{/block:IfInvertColors}
+					</td>
+				</tr>
+			</table>
+			{/block:Photoset}
+			{block:Quote}
+			<table class="post quote">
+				<tr>
+					<td class="caption">"{Quote}"</td>
+					{block:Source}
+					<div class="source">–{Source}</div>
+					{/block:Source}
+					<td class="like_and_reblog_buttons">
+						{block:IfNotInvertColors}
+						<span>{ReblogButton color="black"}</span>
+						<span>{LikeButton color="black"}</span>
+						{/block:IfNotInvertColors}
+						{block:IfInvertColors}
+						<span>{ReblogButton color="white"}</span>
+						<span>{LikeButton color="white"}</span>
+						{/block:IfInvertColors}
+					</td>
+				</tr>
+			</table>
+			{/block:Quote}
+			{block:link}
+			<table class="post link">
+				<tr>
+					{block:Description}
+					<td class="caption">{Description}</td>
+					{/block:Description}
+					<td class="content"><a href="{URL}" class="tablenk" {Target}>{Name}</a></td>
+					<td class="like_and_reblog_buttons">
+						{block:IfNotInvertColors}
+						<span>{ReblogButton color="black"}</span>
+						<span>{LikeButton color="black"}</span>
+						{/block:IfNotInvertColors}
+						{block:IfInvertColors}
+						<span>{ReblogButton color="white"}</span>
+						<span>{LikeButton color="white"}</span>
+						{/block:IfInvertColors}
+					</td>
+				</tr>
+			</table>
+			{/block:link}
+			{block:Chat}
+			<table class="post chat">
+				<tr>
+					<td class="caption">
+						{block:Title}
+						<a href="{Permatablenk}">{Title}</a>
+						{/block:Title}
+					</td>
+					<td class="content">
+						{block:Lines}
+						{block:Label}
+						<span class="label">{Label}</span>
+						{/block:Label}{Line}
+					</td>
+					{/block:Lines}
+					<td class="like_and_reblog_buttons">
+						{block:IfNotInvertColors}
+						<span>{ReblogButton color="black"}</span>
+						<span>{LikeButton color="black"}</span>
+						{/block:IfNotInvertColors}
+						{block:IfInvertColors}
+						<span>{ReblogButton color="white"}</span>
+						<span>{LikeButton color="white"}</span>
+						{/block:IfInvertColors}
+					</td>
+				</tr>
+			</table>
+			{/block:Chat}
+			{block:Video}
+			<table class="post video">
+				<tr>
+					{block:Caption}
+					<td class="caption">{Caption}</td>
+					{/block:Caption}
+					<td class="content">{Video-500}</td>
+					<td class="like_and_reblog_buttons">
+						{block:IfNotInvertColors}
+						<span>{ReblogButton color="black"}</span>
+						<span>{LikeButton color="black"}</span>
+						{/block:IfNotInvertColors}
+						{block:IfInvertColors}
+						<span>{ReblogButton color="white"}</span>
+						<span>{LikeButton color="white"}</span>
+						{/block:IfInvertColors} 
+					</td>
+				</tr>
+			</table>
+			{/block:Video}
+
+			{block:Audio}
+			<table class="post audio">
+				<tr>
+					{block:Caption}
+					<td class="caption">{Caption}</td>
+					{/block:Caption}
+					<td class="content">{AudioPlayerBlack}</td>
+					<td class="like_and_reblog_buttons">
+						{block:IfNotInvertColors}
+						<span>{ReblogButton color="black"}</span>
+						<span>{LikeButton color="black"}</span>
+						{/block:IfNotInvertColors}
+						{block:IfInvertColors}
+						<span>{ReblogButton color="white"}</span>
+						<span>{LikeButton color="white"}</span>
+						{/block:IfInvertColors}
+					</td>
+				</tr> 
+			</table>
+			{/block:Audio}
+			
+			{block:Text}
+			<table class="post text">
+				<tr>
+					{block:Title}
+					<td class="caption">{Title}</td>
+					{/block:Title}
+					<td class="content">{Body}</td>
+					<td class="like_and_reblog_buttons">
+						{block:IfNotInvertColors}
+						<span>{ReblogButton color="black"}</span>
+						<span>{LikeButton color="black"}</span>
+						{/block:IfNotInvertColors}
+						{block:IfInvertColors}
+						<span>{ReblogButton color="white"}</span>
+						<span>{LikeButton color="white"}</span>
+						{/block:IfInvertColors}
+					</td>
+				</tr> 
+			</table>
+			{/block:Audio}
+
+			{/block:Posts}
+		</div>
+
+		{block:IfNotInfiniteScroll}
+		<div id="footer">
+			{block:PreviousPage}
+			<a href="{PreviousPage}">&larr;</a>
+			{/block:PreviousPage}{block:NextPage}
+			<a href="{NextPage}">&rarr;</a>
+			{/block:NextPage}
+		</div>
+		{/block:IfNotInfiniteScroll}
+		{block:IfInfiniteScroll}
+		<div id="footer">
+			<a href="/archive" style="text-decoration:underline;font-size:18px">Archive</a>
+		</div>
+		{/block:IfInfiniteScroll}
+	</body>
+	<script type="text/javascript">
+	$(function(){
+		$(document).on("click", ".post", function(){
+			$("body,html").animate({ scrollTop: $(this).next(".post").offset().top }, 500)
+		})
+		{block:IfInfiniteScroll}
+		var lastpost = $(".post").last().offset().top
+		var page = 1
+		var loading = false
+		$(window).scroll(function(){
+			if (loading) return;
+			if ($(window).scrollTop() > lastpost - window.innerHeight*1.5) {
+				loading = true
+				var $div = $("<div>")
+				$div.load("/page/" + (++page) + " .post", function(){
+					$("#posts").append($div.find(".post"))
+					lastpost = $(".post").last().offset().top
+					loading = false
+				})
+
+			}
+		})
+		$(window).resize(function(){
+			lastpost = $(".post").last().offset().top
+		})
+		{/block:IfInfiniteScroll}
+	})
+	</script>
+	</html>
