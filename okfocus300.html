@@ -345,22 +345,18 @@ OKFocus300 Theme By http://okfoc.us, Internet Legends. ©2013
 			{/block:Posts}
 		</div>
 
-
-		{block:IfInfiniteScroll}
 		<div id="footer">
-			<a href="/archive" style="text-decoration:underline;font-size:18px">Archive</a>
-		</div>
-		{/block:IfInfiniteScroll}
-		{block:IfNotInfiniteScroll}
-		<div id="footer">
+			{block:IfNotInfiniteScroll}
 			{block:PreviousPage}
 			<a href="{PreviousPage}">&larr;</a>
 			{/block:PreviousPage}{block:NextPage}
 			<a href="{NextPage}">&rarr;</a>
 			{/block:NextPage}
+			{/block:IfNotInfiniteScroll}
+			{block:IfInfiniteScroll}
+			<a href="/archive" style="text-decoration:underline;font-size:18px">Archive</a>
+			{/block:IfInfiniteScroll}
 		</div>
-		{/block:IfNotInfiniteScroll}
-	</body>
 	<script type="text/javascript">
 	$(function(){
 		$(document).on("click", ".post", function(){
@@ -389,4 +385,5 @@ OKFocus300 Theme By http://okfoc.us, Internet Legends. ©2013
 		{/block:IfInfiniteScroll}
 	})
 	</script>
+	</body>
 	</html>
