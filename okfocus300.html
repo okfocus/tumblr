@@ -28,7 +28,7 @@ OKFocus300 Theme By http://okfoc.us, Internet Legends. ©2013
 	{/block:Description}
 	<meta name="if:invert colors" content="0"/>
 	<meta name="if:hide text" content="0"/>
-	<meta name="if:infinite scroll" content="0"/>
+	<meta name="if:infinite scroll" content="1"/>
 	<meta name="if:large images" content="0"/>
 	<script src="http://static.tumblr.com/fjuuplb/iPKmxnkr3/jquery.min.js"></script>
 	<style>
@@ -345,6 +345,12 @@ OKFocus300 Theme By http://okfoc.us, Internet Legends. ©2013
 			{/block:Posts}
 		</div>
 
+
+		{block:IfInfiniteScroll}
+		<div id="footer">
+			<a href="/archive" style="text-decoration:underline;font-size:18px">Archive</a>
+		</div>
+		{/block:IfInfiniteScroll}
 		{block:IfNotInfiniteScroll}
 		<div id="footer">
 			{block:PreviousPage}
@@ -354,11 +360,6 @@ OKFocus300 Theme By http://okfoc.us, Internet Legends. ©2013
 			{/block:NextPage}
 		</div>
 		{/block:IfNotInfiniteScroll}
-		{block:IfInfiniteScroll}
-		<div id="footer">
-			<a href="/archive" style="text-decoration:underline;font-size:18px">Archive</a>
-		</div>
-		{/block:IfInfiniteScroll}
 	</body>
 	<script type="text/javascript">
 	$(function(){
