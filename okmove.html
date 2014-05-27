@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]--> 
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+     
+	{block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+
+
+	<title>{Title}</title>
+    
+	<link rel="shortcut icon" href="{Favicon}">
+    <meta name="msapplication-starturl" content="http://tumblr.com/themes" />
+    <meta name="author" content="OKFocus" />
+    <meta http-equiv="imagetoolbar" content="false" />
+    <link href="http://static.tumblr.com/utxaocy/Arlm0w8bd/main.css" media="all" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+        <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]--> 
+
+    <script src="http://static.tumblr.com/8njj3k6/Rxsm0uj6x/modernizr.js"></script>
+    <script src="http://static.tumblr.com/8njj3k6/4WLm0u2ma/jquery.min.js"></script>
+    <script src="http://static.tumblr.com/utxaocy/0jAm0w225/main.js"></script>
+    
+    <!-- DEFAULT VARIABLES -->
+    <meta name="color:Background" content="#ffffff" />
+    
+    <meta name="if:Show Tags" content="1" />
+    <meta name="if:Show Album Art on Audio Posts" content="1" />
+    
+    <meta name="image:Header" content="" />
+    <meta name="image:Background" content="" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{Title}{block:SearchPage}, {lang:Search results for SearchQuery}{/block:SearchPage}{block:PostSummary}, {PostSummary}{/block:PostSummary}</title>
+    {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+    <link rel="shortcut icon" href="{Favicon}" />
+    <link rel="apple-touch-icon" href="{PortraitURL-128}"/>
+    <link rel="alternate" type="application/rss+xml" href="{RSS}" />
+    <style type="text/css">
+        body {
+            background: {color:Background} url('{image:Background}') top left fixed repeat;
+            margin: 0;
+            padding: 0;
+        }
+.csstransforms #container {
+position: static;
+z-index: 1;
+top: 0;
+width: 100%;
+height: 100%;
+}
+    </style>
+    <style type="text/css">{CustomCSS}</style>
+  </head>
+  <body>
+<div id="wrap">
+  <div id="offset"></div>
+  <div id="container">
+    <div id="title">
+		<h1>
+		<a href="/">
+			{block:IfHeaderImage}<img src="{image:Header}" />{/block:IfHeaderImage}
+			{block:IfNotHeaderImage}{Title}{/block:IfNotHeaderImage}
+		</a>
+		</h1>
+		<p>
+		{Description}
+		</p>
+        <p id="old-browser">
+            3D transforms are supported in newer browsers.
+        </p>
+        <!--
+		<div id="social" style="z-index: 10301;">
+
+    
+    PUT SOCIAL BUTTONS HERE
+	
+  </div>
+-->
+        <div id="environment">
+      
+          <div id="content">
+            
+            {block:SearchPage}
+                {block:SearchResults}
+                    <div id="searchresults">{lang:SearchResultCount results for SearchQuery 2}</div>
+                {/block:SearchResults}
+                
+                {block:NoSearchResults}
+                    <div id="searchresults">{lang:No search results for SearchQuery 2}</div>
+                {/block:NoSearchResults}
+            {/block:SearchPage}
+            
+            {block:Posts}
+                <section>
+                    
+                                      {block:Chat}
+                        {block:Title}<h2>{Title}</h2>{/block:Title}
+                        <div class="about main">
+                        <p>
+    						{block:Lines}
+								<div class="line {Alt}">{block:Label}<strong>{Label}</strong>{/block:Label} {Line}</div>
+							{/block:Lines}
+                        </p>
+                    {/block:Chat}
+                    
+                    {block:Photo}
+                        <p>{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" />{LinkCloseTag}</p>
+
+                        {block:Caption}<p>{Caption}</p>{/block:Caption}
+                    {/block:Photo}
+                    
+                    {block:Video}
+                        {Video-500}
+
+                        {block:Caption}<p>{Caption}</p>{/block:Caption}
+                    {/block:Video}
+                    
+                    {block:Audio}
+                        {block:IfShowAlbumArtOnAudioPosts}
+                            {block:AlbumArt}
+								<img src="{AlbumArtURL}" alt="{block:Artist}{Artist}{/block:Artist}{block:TrackName} - {TrackName}{/block:TrackName}" style="margin-bottom:10px;" />
+                            {/block:AlbumArt}
+                        {/block:IfShowAlbumArtOnAudioPosts}
+                                             <div class="about main">
+
+                            <p>{AudioPlayerBlack}</p>
+                            <p>{PlayCountWithLabel}{block:ExternalAudio}<span class="download_external_audio"> &bull; <a href="{ExternalAudioURL}">{lang:Download}</a></span>{/block:ExternalAudio}</p>
+
+                        {block:Caption}<p>{Caption}</p>{/block:Caption}
+                        </div>
+                    {/block:Audio}
+                    
+                    {block:Quote}
+   
+                        <p class="quote {Length}"style="font-size:40px;margin-top:20%;background:white;">{Quote}</p>
+						{block:Source}
+							<table style="background:white;font-size:12px;" border="0" cellpadding="20" cellspacing="0" width="100%">
+								<tr>
+
+									<td valign="top" class="quote_source">
+										&mdash;{Source}
+									</td>
+								</tr>
+							</table>
+						{/block:Source}
+                    {/block:Quote}
+                        
+                    {block:Text}
+                        {block:Title}<h1>{Title}</h1>{/block:Title}
+                        <p style="font-size:30px">{Body}</p>
+         
+                    {/block:Text}
+                    
+                    {block:Answer}
+                        <p>
+							<img src="{AskerPortraitURL-24}">{Asker}:
+                            {Question}
+                        </p>
+                 
+                        <p>{Answer}</p>
+                    {/block:Answer}
+                    
+  
+                    
+                    {block:Link}
+                     <div class="about main">
+
+                       <a class="plink" href="{URL}">
+                        <p>  {Target} {Name} </a></p>
+                        {block:Description}<p>{Description}</p>{/block:Description}
+     
+                    {/block:Link}
+ <div class="about">
+
+                    {block:Date}
+						<p>
+							<a href="{Permalink}">
+								{block:Reblog}
+									{lang:Reblogged TimeAgo from ReblogParentName} {block:RebloggedFromReblog}(<span style="text-transform:lowercase;">{lang:Originally from ReblogRootName}</span>){/block:RebloggedFromReblog}
+								{/block:Reblog}
+								
+								{block:NotReblog}
+									{lang:Posted TimeAgo from source}
+								{/block:NotReblog}
+								{block:NoteCount}{NoteCountWithLabel}{/block:NoteCount}
+							</a>
+						</p>
+                    {/block:Date}
+                    
+                    <p class="footer {block:ContentSource}with_source_url{/block:ContentSource}" style="
+                        display:none;
+                        {block:IfShowTags}{block:HasTags}display:block;{/block:HasTags}{/block:IfShowTags}
+                        {block:ContentSource}display:block;{/block:ContentSource}">
+                        {block:IfShowTags}
+                            {block:HasTags}<p class="tags">{lang:Tagged}: {block:Tags}<a href="{TagURL}">{Tag}</a>,<span class="tag-commas"></span>{/block:Tags}</p>{/block:HasTags}
+                        {/block:IfShowTags}
+                        
+                        {block:ContentSource}
+                            <a href="{SourceURL}" class="source_url">
+                                {lang:Source} 
+                                {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}
+                                {block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+                            </a>
+                        {/block:ContentSource}
+                        
+                    </p>
+                    
+                    {block:PostNotes}<p class="notecontainer">{PostNotes}</p>{/block:PostNotes}
+                    
+                  </div>
+                </section>
+            {/block:Posts}
+
+          </div> 
+        </div> 
+      </div> 
+    </div> 
+
+    <div class="zoom-out" id="zoom-left"></div>
+    <div class="zoom-in right" id="zoom-right"></div>
+
+    <div id="hud_container">
+      <div id="hud"></div>
+    </div>
+
+    <img id="pinwheel" src="http://static.tumblr.com/utxaocy/jXJm0uknj/gradient_hue_polar_1331510096_ryz.gif">
+
+    <p id="credit">Theme by <a href="http://okfoc.us">OKFocus</a></p>
+    
+  </body>
+</html>
