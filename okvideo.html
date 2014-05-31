@@ -293,8 +293,8 @@
                 opacity:0;
                     transition: all .2s linear;
     -o-transition: all .2s linear;
-	-moz-transition: all .2s linear;
-	-webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -webkit-transition: all .2s linear;
             }
             
             #posts .post:hover .caption_and_post_info.after_top_part {
@@ -1452,6 +1452,35 @@
             </footer>
         </section>
 
+<script>
+    (function( ua ) {
+      ua = ua.toLowerCase();
+      var match = /(chrome)[ \/]([\w.]+)/.exec( ua ) ||
+        /(webkit)[ \/]([\w.]+)/.exec( ua ) ||
+        /(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
+        /(msie) ([\w.]+)/.exec( ua ) ||
+        0 > ua.indexOf("compatible")  && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec( ua ) ||
+        [];
+      var matched = {
+        browser: match[ 1 ] || "",
+        version: match[ 2 ] || "0"
+      };
+      browser = {};
+      if ( matched.browser ) {
+          browser[ matched.browser ] = true;
+          browser.version = matched.version;
+      }
+      // Chrome is Webkit, but Webkit is also Safari.
+      if ( browser.chrome ) {
+        browser.webkit = true;
+      } else if ( browser.webkit ) {
+        browser.safari = true;
+      }
+      $.browser = browser;
+      return browser;
+    })( navigator.userAgent );
+</script>
+
         {block:IfUseEndlessScrolling}
         <script type="text/javascript">
             var Tumblelog = {};
@@ -1634,13 +1663,16 @@
         {/block:IfGoogleAnalyticsID}
         {block:IfUseEndlessScrolling}<script type="text/javascript" src="http://assets.tumblr.com/javascript/tumblelog.js"></script>{/block:IfUseEndlessScrolling}
         
-                   <script type="text/javascript" src="http://static.tumblr.com/fjuuplb/D2Dmgafjh/okvideo.min.js"></script>
+                   <script type="text/javascript" src="http://static.tumblr.com/ffiwaju/xmFn6g3tr/okvideo.min.js"></script>
         
         <script type="text/javascript">
     $(function(){
-        $.okvideo({ source: '{text:Background Video}', volume: 0 }) 
+        $.okvideo({
+            source: '{text:Background Video}',
+            volume: 0,
+        })
     });
-        </script>     
+        </script>
 
     </body>
 </html>
